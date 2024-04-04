@@ -1,17 +1,18 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { formatCpf } from "@/lib/mask";
-import { validationCpf, validationSchema } from "@/lib/validations";
+import { validationSchema } from "@/lib/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { object, set, z } from "zod";
-import { googleApi } from "@/services/driverApi";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { z } from "zod";
 import Success from "@/components/ui/success";
+import { ThreeDots } from 'react-loader-spinner'
+import { Dialog, DialogContent, DialogDescription } from "@radix-ui/react-dialog";
+import { DialogFooter, DialogHeader } from "@/components/ui/dialog";
 
 type SubmitFormData = {
   cpf: string;
@@ -208,7 +209,21 @@ export default function Home() {
             )}
           />
           <div className="pt-12">
-            <Button disabled={isLoading} type="submit" className="w-full py-4">Realizar cadastro</Button>
+            <Button disabled={isLoading} type="submit" className="w-full py-4">
+            {isLoading && 
+              <ThreeDots
+                visible={true}
+                height="30"
+                width="30"
+                color="#fff"
+                radius="9"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+              />
+            }
+            {!isLoading && "Realizar cadastro"}
+            </Button>
           </div>
         </form>
     </Form>
