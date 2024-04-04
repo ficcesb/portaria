@@ -1,7 +1,8 @@
 'use client'
 
+import { ThreeDots } from 'react-loader-spinner'
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { formatCpf } from "@/lib/mask";
 import { validationSchema } from "@/lib/validations";
@@ -9,10 +10,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import Success from "@/components/ui/success";
-import { ThreeDots } from 'react-loader-spinner'
-import { Dialog, DialogContent, DialogDescription } from "@radix-ui/react-dialog";
-import { DialogFooter, DialogHeader } from "@/components/ui/dialog";
 
 type SubmitFormData = {
   cpf: string;
@@ -210,9 +209,9 @@ export default function Home() {
           />
           <div className="pt-12">
             <Button disabled={isLoading} type="submit" className="w-full py-4">
-            {isLoading && 
+              {!isLoading && "Realizar cadastro"}
               <ThreeDots
-                visible={true}
+                visible={isLoading}
                 height="30"
                 width="30"
                 color="#fff"
@@ -221,8 +220,6 @@ export default function Home() {
                 wrapperStyle={{}}
                 wrapperClass=""
               />
-            }
-            {!isLoading && "Realizar cadastro"}
             </Button>
           </div>
         </form>
