@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node ./config/credentials.js & next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -19,6 +19,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^1.0.0",
+    "dotenv": "^16.4.5",
     "googleapis": "105",
     "lucide-react": "^0.363.0",
     "mongodb": "^6.5.0",
@@ -29,6 +30,7 @@
     "react-hook-form": "^7.51.2",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
+    "ts-node": "^10.9.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {

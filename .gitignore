@@ -37,4 +37,4 @@ next-env.d.ts
 
 .env
 
-temp/credentials.json
+config/credentials.json
