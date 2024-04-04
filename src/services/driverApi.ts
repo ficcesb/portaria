@@ -7,7 +7,7 @@ export async function googleApi({imageStream, name}:{imageStream: File, name: st
   getCredentials()
   
   const auth = new GoogleAuth({
-    keyFile: "./credentials.json",
+    keyFile: "./temp/credentials.json",
     scopes: 'https://www.googleapis.com/auth/drive',
   });
   const service = google.drive({version: 'v3', auth, });

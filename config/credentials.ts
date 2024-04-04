@@ -16,7 +16,7 @@ const j = {
 }
 
 export function credentials (): string {
-  const file = "./credentials.json"
+  const file = "./temp/credentials.json"
 
   fs.writeFile(file, JSON.stringify(j, null, 2), 'utf8', (err) => {
     if (err) {
